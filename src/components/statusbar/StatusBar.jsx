@@ -3,6 +3,7 @@ import WindowsStart from '../../assets/icons/windowsstart.png';
 import Volume from '../../assets/icons/volume.png';
 import Warning from '../../assets/icons/warning.png';
 import TaskDiv from '../../common/TaskDiv';
+import StartModal from './StartModal';
 
 
 const StatusBar = () => {
@@ -53,6 +54,9 @@ const StatusBar = () => {
                     </div>
                 </div>
             </div>
+            <StartModal isOpen={true}>
+
+            </StartModal>
         </>
     )
 }
