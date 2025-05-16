@@ -7,6 +7,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'ArialNarrow';
+    src: url('./assets/fonts/ArialNarrowMTStd.otf') format('opentype');
+    font-weight: lighter;
+    font-style: normal;
+}
+
 body {
     font-family: 'MyFont', sans-serif;
 }
