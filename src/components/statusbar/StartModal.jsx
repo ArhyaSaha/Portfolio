@@ -3,6 +3,13 @@ import logOff from '../../assets/icons/logoff.png'
 import powerOff from '../../assets/icons/poweroff.png'
 import IE from '../../assets/icons/internetExplorer.png'
 import email from '../../assets/icons/email.png'
+import myDocs from '../../assets/icons/myDocs.png'
+import myPics from '../../assets/icons/myPictures.png'
+import myComputer from '../../assets/icons/myComputer.png'
+import controlPanel from '../../assets/icons/controlPanel.png'
+import printer from '../../assets/icons/printer.png'
+import search from '../../assets/icons/search.png'
+
 
 const StartModal = ({ isOpen }) => {
     return (
@@ -74,8 +81,65 @@ const StartModal = ({ isOpen }) => {
                         </div>
                     </div>
                 </div>
-                <div className='h-full w-full border-l-2 border-[#BAD4F4] bg-[#D3E5FA]'>
-                    div2
+                <div className='h-full w-full px-2 border-l-2 border-[#afcdf2] bg-[#D3E5FA]'>
+                    <div className='flex items-center pt-3'>
+                        <img src={myDocs} alt="My Documents" className='w-8 h-8' />
+                        <div className='pl-2'>
+                            <p className='leading-4 tracking-wide text-xl font-bold text-[#0a1f56] '>My Documents</p>
+                        </div>
+                    </div>
+
+                    <div className='flex items-center pt-2'>
+                        <img src={myPics} alt="My Pictures" className='w-8 h-8' />
+                        <div className='pl-2'>
+                            <p className='leading-4 tracking-wide text-xl font-bold text-[#0a1f56] '>My Pictures</p>
+                        </div>
+                    </div>
+
+                    <div className='flex items-center pt-2'>
+                        <img src={myPics} alt="My Music" className='w-8 h-8' />
+                        <div className='pl-2'>
+                            <p className='leading-4 tracking-wide text-xl font-bold text-[#0a1f56] '>My Music</p>
+                        </div>
+                    </div>
+
+                    <div className='flex items-center pt-2'>
+                        <img src={myComputer} alt="My Computer" className='w-8 h-8' />
+                        <div className='pl-2'>
+                            <p className='leading-4 tracking-wide text-xl font-bold text-[#0a1f56] '>My Computer</p>
+                        </div>
+                    </div>
+
+                    <div className='h-[0.10rem] my-3 w-full' style={{
+                        background: 'linear-gradient(90deg,rgba(211, 229, 250, 1) 0%, rgba(163, 198, 246, 1) 30%, rgba(163, 198, 246, 1) 70%, rgba(211, 229, 250, 1) 100%)'
+                    }}></div>
+
+                    <div className='flex items-center pt-2'>
+                        <img src={controlPanel} alt="Control Panel" className='w-8 h-8' />
+                        <div className='pl-2'>
+                            <p className='leading-4 tracking-wide text-lg text-[#0a1f56] '>Control Panel</p>
+                        </div>
+                    </div>
+
+                    <div className='flex items-center pt-2'>
+                        <img src={printer} alt="Printer and faxes" className='w-8 h-8' />
+                        <div className='pl-2'>
+                            <p className='leading-4 tracking-wide text-lg text-[#0a1f56] '>Printer and Faxes</p>
+                        </div>
+                    </div>
+
+                    <div className='h-[0.10rem] my-3 w-full' style={{
+                        background: 'linear-gradient(90deg,rgba(211, 229, 250, 1) 0%, rgba(163, 198, 246, 1) 30%, rgba(163, 198, 246, 1) 70%, rgba(211, 229, 250, 1) 100%)'
+                    }}></div>
+
+                    <div className='flex items-center pt-2'>
+                        <img src={search} alt="Search" className='w-8 h-8' />
+                        <div className='pl-2'>
+                            <p className='leading-4 tracking-wide text-lg text-[#0a1f56] '><u>S</u>earch</p>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
 
