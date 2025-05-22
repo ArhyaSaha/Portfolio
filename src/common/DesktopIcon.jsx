@@ -8,7 +8,7 @@ const DesktopIcon = ({
             // ref={iconRef}
             onMouseDown={onMouseDown}
             onContextMenu={onContextMenu}
-            className={`absolute flex flex-col justify-center cursor-pointer items-center w-16 h-16 py-3 hover:bg-blue-500 rounded select-none ${selected ? 'bg-blue-600 text-white rounded' : ''}`}
+            className={`absolute flex flex-col justify-center cursor-pointer items-center w-16 h-16 py-3 hover:bg-blue-300/30 rounded select-none ${selected ? 'bg-blue-600 text-white rounded' : ''}`}
             style={{
                 left: position.x,
                 top: position.y,
