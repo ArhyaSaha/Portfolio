@@ -17,6 +17,41 @@ const Desktop = () => {
     const [selectBox, setSelectBox] = useState(null);
     const startPos = useRef(null);
 
+    const [contextMenu, setContextMenu] = useState({
+        visible: false,
+        x: 0,
+        y: 0,
+        type: null,
+        iconId: null,
+    });
+
+    useEffect(() => {
+        const handleClickOutside = () => {
+            setContextMenu({ visible: false, x: 0, y: 0, type: null });
+        };
+
+        if (contextMenu.visible) {
+            window.addEventListener('click', handleClickOutside);
+        }
+
+        return () => {
+            window.removeEventListener('click', handleClickOutside);
+        };
+    }, [contextMenu.visible]);
+
+    const onDesktopRightClick = (e) => {
+        e.preventDefault();
+        if (e.target !== containerRef.current) return;
+
+        setContextMenu({
+            visible: true,
+            x: e.clientX,
+            y: e.clientY,
+            type: 'desktop',
+            iconId: null,
+        });
+    };
+
     useEffect(() => {
         console.log(selectedIds)
     }, [selectedIds])
@@ -89,6 +124,17 @@ const Desktop = () => {
 
     const handleIconMouseDown = (iconId, e) => {
         e.stopPropagation();
+        if (e.type === 'contextmenu') {
+            e.preventDefault();
+            setContextMenu({
+                visible: true,
+                x: e.clientX,
+                y: e.clientY,
+                type: 'icon',
+                iconId,
+            });
+            return;
+        }
 
         const isSelected = selectedIds.includes(iconId);
         const multiSelect = e.ctrlKey || e.metaKey || e.shiftKey;
@@ -151,11 +197,6 @@ const Desktop = () => {
                         let gridX = Math.round((icon.position.x - PADDING_OFFSET) / GRID_SIZE);
                         let gridY = Math.round((icon.position.y - PADDING_OFFSET) / GRID_SIZE);
 
-                        if (gridX === 0 && gridY === 0) {
-                            gridX = Math.max(0, gridX + 1);
-                            gridY = Math.max(0, gridY + 1);
-                        }
-
                         let found = false;
                         const spiralLimit = 10;
 
@@ -207,6 +248,7 @@ const Desktop = () => {
         <div
             ref={containerRef}
             onMouseDown={onMouseDown}
+            onContextMenu={onDesktopRightClick}
             className='relative bg-transparent w-full h-full gap-y-4 px-4 py-2 overflow-hidden'
         >
             {icons.map((icon) => (
@@ -217,6 +259,7 @@ const Desktop = () => {
                     position={icon.position}
                     selected={selectedIds.includes(icon.id)}
                     onMouseDown={(e) => handleIconMouseDown(icon.id, e)}
+                    onContextMenu={(e) => handleIconMouseDown(icon.id, e)}
                     isDragging={selectedIds.includes(icon.id)}
                 />
             ))}
@@ -231,6 +274,27 @@ const Desktop = () => {
                         height: selectBox.h,
                     }}
                 />
+            )}
+
+            {contextMenu.visible && (
+                <ul
+                    className="absolute bg-gray-800 text-white p-2 rounded shadow-md z-50 w-48"
+                    style={{ top: contextMenu.y, left: contextMenu.x }}
+                >
+                    {contextMenu.type === 'desktop' ? (
+                        <>
+                            <li className="hover:bg-gray-700 px-2 py-1 cursor-pointer">New Folder</li>
+                            <li className="hover:bg-gray-700 px-2 py-1 cursor-pointer">Sort by</li>
+                            <li className="hover:bg-gray-700 px-2 py-1 cursor-pointer">Refresh</li>
+                        </>
+                    ) : (
+                        <>
+                            <li className="hover:bg-gray-700 px-2 py-1 cursor-pointer">Open</li>
+                            <li className="hover:bg-gray-700 px-2 py-1 cursor-pointer">Rename</li>
+                            <li className="hover:bg-gray-700 px-2 py-1 cursor-pointer">Delete</li>
+                        </>
+                    )}
+                </ul>
             )}
         </div>
     )
