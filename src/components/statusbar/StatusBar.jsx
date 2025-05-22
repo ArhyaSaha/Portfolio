@@ -11,7 +11,7 @@ const StatusBar = () => {
     const [start, setStart] = useState(false)
     return (
         <>
-            <div className="flex flex-col fixed bottom-0 left-0 w-full h-9 bg-blue-500 ">
+            <div className="flex flex-col bottom-0 left-0 w-full h-9 bg-blue-500 ">
                 {/* <div className='h-[0.15rem]' style={{ backgroundColor: '#3082E4' }}></div> */}
                 <div className='h-full flex items-center overflow-visible relative' style={{
                     // background: 'linear-gradient(180deg, rgba(5,71,201,1) 20%, rgba(31,94,221,1) 100%)',

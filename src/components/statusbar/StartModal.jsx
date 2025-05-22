@@ -19,7 +19,7 @@ import paint from '../../assets/icons/msPaint.png'
 
 const StartModal = ({ isOpen }) => {
     return (
-        <div className='fixed flex flex-col items-center justify-between bottom-9 w-[30rem] h-[35rem] bg-[#3C89E7] overflow-hidden'>
+        <div className='fixed flex flex-col items-center justify-between bottom-9 w-[30rem] h-[35rem] bg-[#3C89E7] overflow-hidden z-50'>
             {/* Username Div */}
             <div className='h-20 w-full flex items-center bg-blue-400' style={{ background: 'linear-gradient(180deg,rgba(95, 155, 228, 1) 0%, rgba(15, 97, 204, 1) 15%, rgba(60, 137, 231, 1) 100%)' }}>
                 <div className='flex justify-center items-center ml-5 w-15 h-15 rounded-sm bg-white p-0'>
