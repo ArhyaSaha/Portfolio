@@ -158,7 +158,7 @@ const StartModal = ({ isOpen }) => {
                     <div className='flex items-center pt-2'>
                         <img src={run} alt="run" className='w-8 h-8' />
                         <div className='pl-2'>
-                            <p className='leading-4 tracking-wide text-lg text-[#0a1f56] '><u>R</u>un</p>
+                            <p className='leading-4 tracking-wide text-lg text-[#0a1f56] '><u>R</u>un .  .  .</p>
                         </div>
                     </div>
 

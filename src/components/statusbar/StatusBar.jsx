@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import WindowsStart from '../../assets/icons/windowsstart.png';
 import Volume from '../../assets/icons/volume.png';
 import Warning from '../../assets/icons/warning.png';
@@ -6,7 +6,9 @@ import TaskDiv from '../../common/TaskDiv';
 import StartModal from './StartModal';
 
 
+
 const StatusBar = () => {
+    const [start, setStart] = useState(false)
     return (
         <>
             <div className="flex flex-col fixed bottom-0 left-0 w-full h-9 bg-blue-500 ">
@@ -16,7 +18,7 @@ const StatusBar = () => {
                     background: 'linear-gradient(180deg,rgba(58, 137, 233, 1) 0%, rgba(34, 88, 215, 1) 15%, rgba(34, 87, 213, 1) 29%, rgba(36, 93, 219, 1) 50%, rgba(38, 99, 224, 1) 75%, rgba(28, 75, 187, 1) 100%)',
                 }}>
                     {/* START */}
-                    <div className='w-26 flex cursor-pointer items-center gap-x-2 border border-[#084408] bg-[#1F991F] h-full rounded-r-xl text-white pl-4 shadow-[inset_0px_0px_7px_2px_#084408]' onClick={() => { console.log('hello') }} style={{
+                    <div className='w-26 flex cursor-pointer items-center gap-x-2 border border-[#084408] bg-[#1F991F] h-full rounded-r-xl text-white pl-4 shadow-[inset_0px_0px_7px_2px_#084408]' onClick={() => { setStart(!start) }} style={{
                         background: 'linear-gradient(180deg,rgba(21, 78, 21, 1) 0%, rgba(28, 138, 28, 1) 22%, rgba(28, 138, 28, 1) 49%, rgba(31, 155, 31, 1) 84%, rgba(26, 95, 27, 1) 100%)',
                     }} >
                         <img src={WindowsStart} alt="Home Icon" className="w-5 h-5" />
@@ -54,9 +56,9 @@ const StatusBar = () => {
                     </div>
                 </div>
             </div>
-            <StartModal isOpen={true}>
-
-            </StartModal>
+            {start &&
+                <StartModal isOpen={true}></StartModal>
+            }
         </>
     )
 }
