@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import emptyFolder from '../../assets/icons/emptyFolder.png'
 import myComputer from '../../assets/icons/myComputer.png'
 import DesktopIcon from '../../common/DesktopIcon'
+import MyFilesModal from '../../common/MyFilesModal'
+
 const iconsInitial = [
     { id: 1, name: 'My Computer', icon: myComputer, position: { x: 16, y: 16 } },
     { id: 2, name: 'My Folder', icon: emptyFolder, position: { x: 16, y: 96 } },
@@ -296,6 +298,9 @@ const Desktop = () => {
                     )}
                 </ul>
             )}
+
+
+            <MyFilesModal />
         </div>
     )
 }
