@@ -1,4 +1,9 @@
 import React, { useRef, useState } from 'react';
+import { FaFolder, FaChevronDown, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import go from '../assets/icons/go.ico'
+import back from '../assets/icons/back1.png'
+import front from '../assets/icons/front1.png'
+import search from '../assets/icons/search.png'
 
 const MIN_WIDTH = 300, MIN_HEIGHT = 200;
 
@@ -48,19 +53,56 @@ export default function MyFilesModal() {
 
     return (
         <div
-            className="absolute rounded-t-sm bg-white border-2 border-blue-800 shadow-lg z-50"
+            className="absolute overflow-hidden rounded-t-lg bg-white border-2 border-blue-800 shadow-lg z-50"
             style={{ left: pos.x, top: pos.y, width: size.w, height: size.h }}
         >
             {/* Title bar */}
             <div
-                className="bg-blue-800 text-white px-3 py-1 text-sm font-bold cursor-move select-none"
+                className="header_bg w-full text-white px-3 py-1 text-sm font-bold cursor-move select-none"
                 onMouseDown={onDrag}
             >
                 My Files
             </div>
 
             {/* Content */}
-            <div className="p-4 h-full overflow-auto text-sm">
+            <div className="h-full overflow-auto text-sm">
+                <div className='w-full bg-[#eae8d5]'>
+                    <div className='px-2 h-6 w-full flex gap-x-4 border-b-2 border-[#d1d1c8]'>
+                        <p><u>F</u>ile</p>
+                        <p><u>E</u>dit</p>
+                        <p><u>V</u>iew</p>
+                        <p><u>H</u>elp</p>
+                    </div>
+
+                    <div className='h-10 w-full flex'>
+                        <div className='flex items-center'>
+                            <img src={back} alt="back" className='w-8 h-8' />
+                            <p>Back</p>
+                            <img src={front} alt="front" className='w-8 h-8' />
+                        </div>
+                        <div>
+                            <img src={search} alt="Search" className='w-8 h-8' />
+                        </div>
+                    </div>
+
+                    <div className='h-8 w-full flex border-y-2 border-[#d1d1c8]'>
+                        <p className='px-2 tracking-wide flex items-center text-center'>A<u>d</u>dress</p>
+
+                        <div className="flex items-center border border-gray-400 shadow-inner bg-gray-100 px-1 py-1 w-full text-sm font-sans max-w-xl rounded-sm">
+                            {/* Address Input Area */}
+                            <div className="flex items-center flex-1 border border-gray-400 bg-white px-2 py-[2px] shadow-inner">
+                                <span className="text-gray-800 truncate">C:\Documents and Settings\Admin\Desktop</span>
+                                <FaChevronDown className="ml-2 text-xs text-gray-600" />
+                            </div>
+                        </div>
+
+                        <div className='ml-2 w-fit pr-2 flex items-center justify-center gap-x-1  text-lg tracking-wide'>
+                            <img src={go} alt="Go" className='w-5 h-5' />
+                            <p>Go</p>
+                        </div>
+
+                    </div>
+                </div>
                 This is a draggable and resizable modal.
             </div>
 
