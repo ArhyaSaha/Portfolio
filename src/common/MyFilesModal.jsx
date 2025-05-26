@@ -6,6 +6,8 @@ import front from '../assets/icons/front1.png'
 import search from '../assets/icons/search.png'
 import view from '../assets/icons/view.png'
 import downArrow from '../assets/icons/downArrow1.png'
+import searchbarDropdown from '../assets/icons/searchbarDropdown.png'
+import dropdownArrow from '../assets/icons/dropdownArrow.png'
 import emptyFolder from '../assets/icons/emptyFolder.png'
 
 const MIN_WIDTH = 300, MIN_HEIGHT = 200;
@@ -112,9 +114,9 @@ export default function MyFilesModal() {
 
                             <div className="flex items-center max-w-lg w-full ">
                                 {/* Address Input Area */}
-                                <div className="flex items-center h-5 flex-1 border border-gray-400 bg-white px-2 py-[2px] shadow-inner">
+                                <div className="flex items-center justify-between h-5 flex-1 border border-gray-400 bg-white pl-2 py-[2px] shadow-inner">
                                     <span className="text-gray-800 truncate">C:\Documents and Settings\Admin\Desktop</span>
-                                    <FaChevronDown className="ml-2 text-xs text-gray-600" />
+                                    <img src={searchbarDropdown} alt="" className='w-4 h-4' />
                                 </div>
                             </div>
 
@@ -127,7 +129,29 @@ export default function MyFilesModal() {
                     </div>
                 </div>
                 <div className='bg-white w-full' style={{ height: 'calc(100% - 5.7rem)' }}>
+                    <div className='bg-blue-500 w-40 h-full flex flex-col items-center py-10 gap-y-5' style={{ background: 'linear-gradient(to bottom, #748aff 0%, #4057d3 100%)' }}>
+                        <div className='w-36 h-24 bg-white rounded-t-sm overflow-hidden' style={{
+                            background: 'linear-gradient(to right, rgb(180, 200, 251) 0%, rgb(164, 185, 251) 50%, rgb(180, 200, 251) 100%)'
+                        }}>
+                            <div className='flex items-center justify-between pl-3 pr-2 w-full h-7 bg-blue-300 font-bold text-[#214489] text-[1rem] tracking-wide' style={{
+                                background: 'linear-gradient(to right, rgb(240, 240, 255) 0%, rgb(240, 240, 255) 30%, rgb(168, 188, 255) 100%)'
+                            }}>
+                                <p>System Tasks</p>
+                                <img src={dropdownArrow} alt="" className='w-4 h-4' />
+                            </div>
+                        </div>
 
+                        <div className='w-36 h-24 bg-white rounded-t-sm overflow-hidden' style={{
+                            background: 'linear-gradient(to right, rgb(180, 200, 251) 0%, rgb(164, 185, 251) 50%, rgb(180, 200, 251) 100%)'
+                        }}>
+                            <div className='flex items-center justify-between pl-3 pr-2 w-full h-7 bg-blue-300 font-bold text-[#214489] text-[1rem] tracking-wide' style={{
+                                background: 'linear-gradient(to right, rgb(240, 240, 255) 0%, rgb(240, 240, 255) 30%, rgb(168, 188, 255) 100%)'
+                            }}>
+                                <p>Other Actions</p>
+                                <img src={dropdownArrow} alt="" className='w-4 h-4' />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
