@@ -4,6 +4,7 @@ import go from '../assets/icons/go.ico'
 import back from '../assets/icons/back1.png'
 import front from '../assets/icons/front1.png'
 import search from '../assets/icons/search.png'
+import emptyFolder from '../assets/icons/emptyFolder.png'
 
 const MIN_WIDTH = 300, MIN_HEIGHT = 200;
 
@@ -53,12 +54,12 @@ export default function MyFilesModal() {
 
     return (
         <div
-            className="absolute overflow-hidden rounded-t-lg bg-white border-2 border-blue-800 shadow-lg z-50"
+            className="absolute pt-7 overflow-hidden rounded-t-lg bg-blue-600 px-0.5 shadow-lg z-50"
             style={{ left: pos.x, top: pos.y, width: size.w, height: size.h }}
         >
             {/* Title bar */}
             <div
-                className="header_bg w-full text-white px-3 py-1 text-sm font-bold cursor-move select-none"
+                className="header__bg w-full h-10 text-white px-3 py-1 text-sm font-bold cursor-move select-none"
                 onMouseDown={onDrag}
             >
                 My Files
@@ -74,14 +75,22 @@ export default function MyFilesModal() {
                         <p><u>H</u>elp</p>
                     </div>
 
-                    <div className='h-10 w-full flex'>
-                        <div className='flex items-center'>
+                    <div className='h-10 w-full flex items-center'>
+                        <div className='h-8 flex items-center ml-2 pr-2 border-r-2 border-[#d1d1c8]'>
                             <img src={back} alt="back" className='w-8 h-8' />
                             <p>Back</p>
                             <img src={front} alt="front" className='w-8 h-8' />
                         </div>
-                        <div>
-                            <img src={search} alt="Search" className='w-8 h-8' />
+                        <div className='flex items-center gap-x-2 mx-3'>
+                            <div className='flex tracking-wide gap-x-1'>
+                                <img src={search} alt="Search" className='w-6 h-6' />
+                                <p>Search</p>
+                            </div>
+
+                            <div className='flex tracking-wide gap-x-1'>
+                                <img src={emptyFolder} alt="Folders" className='w-6 h-6' />
+                                <p>Folders</p>
+                            </div>
                         </div>
                     </div>
 
