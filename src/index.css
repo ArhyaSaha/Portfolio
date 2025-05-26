@@ -17,3 +17,38 @@
 body {
     font-family: 'MyFont', sans-serif;
 }
+
+.header__bg {
+    background: linear-gradient(to bottom,#0058ee 0%,#3593ff 4%,#288eff 6%,#127dff 8%,#036ffc 10%,#0262ee 14%,#0057e5 20%,#0054e3 24%,#0055eb 56%,#005bf5 66%,#026afe 76%,#0062ef 86%,#0052d6 92%,#0040ab 94%,#003092 100%);
+position: absolute;
+left: 0;
+top: 0;
+right: 0;
+height: 28px;
+/* pointer-events: none; */
+overflow: hidden;
+}
+
+.header__bg:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    opacity: 1;
+background: linear-gradient(to right, #1638e6 0%, transparent 100%);
+top: 0;
+bottom: 0;
+width: 15px;
+}
+
+.header__bg:after {
+    content: '';
+    opacity: 1;
+display: block;
+position: absolute;
+right: 0;
+background: linear-gradient(to left, #1638e6 0%, transparent 100%);
+top: 0;
+bottom: 0;
+width: 15px;
+}
