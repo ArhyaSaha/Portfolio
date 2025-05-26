@@ -9,6 +9,12 @@ import downArrow from '../assets/icons/downArrow1.png'
 import searchbarDropdown from '../assets/icons/searchbarDropdown.png'
 import dropdownArrow from '../assets/icons/dropdownArrow.png'
 import emptyFolder from '../assets/icons/emptyFolder.png'
+import folder from '../assets/icons/folder.png'
+import discC from '../assets/icons/discC.png'
+import dvd from '../assets/icons/dvd.png'
+import close from '../assets/icons/close.png'
+import minimize from '../assets/icons/minimize.png'
+import maximize from '../assets/icons/maximize.png'
 
 const MIN_WIDTH = 300, MIN_HEIGHT = 200;
 
@@ -72,7 +78,7 @@ export default function MyFilesModal() {
             {/* Content */}
             <div className="h-full overflow-auto text-sm">
                 <div className='w-full bg-[#eae8d5]'>
-                    <div className='tracking-wide px-2 h-6 w-full flex gap-x-4 border-b-2 border-[#d1d1c8]'>
+                    <div className='tracking-wide px-2 h-4 w-full flex items-center gap-x-4 border-b-2 border-[#d1d1c8]'>
                         <p><u>F</u>ile</p>
                         <p><u>E</u>dit</p>
                         <p><u>V</u>iew</p>
@@ -128,8 +134,8 @@ export default function MyFilesModal() {
 
                     </div>
                 </div>
-                <div className='bg-white w-full' style={{ height: 'calc(100% - 5.7rem)' }}>
-                    <div className='bg-blue-500 w-40 h-full flex flex-col items-center py-10 gap-y-5' style={{ background: 'linear-gradient(to bottom, #748aff 0%, #4057d3 100%)' }}>
+                <div className='bg-white w-full flex' style={{ height: 'calc(100% - 5.2rem)' }}>
+                    <div className='bg-blue-500 min-w-40 h-full flex flex-col items-center py-10 gap-y-5' style={{ background: 'linear-gradient(to bottom, #748aff 0%, #4057d3 100%)' }}>
                         <div className='w-36 h-24 bg-white rounded-t-sm overflow-hidden' style={{
                             background: 'linear-gradient(to right, rgb(180, 200, 251) 0%, rgb(164, 185, 251) 50%, rgb(180, 200, 251) 100%)'
                         }}>
@@ -150,6 +156,32 @@ export default function MyFilesModal() {
                                 <p>Other Actions</p>
                                 <img src={dropdownArrow} alt="" className='w-4 h-4' />
                             </div>
+                        </div>
+                    </div>
+
+                    <div className='w-full h-full bg-white pt-0.5'>
+                        <p className='font-bold tracking-wide text-[1rem] ml-5 leading-5'>Files Stored on This Computer</p>
+                        <div className='w-74 h-0.5' style={{ background: 'linear-gradient(to right, #70bfff 0%, #fff 100%)' }}></div>
+                        <div className='ml-5 mt-2 flex items-center'>
+                            <img src={folder} alt="" className='w-11 h-11' />
+                            <p className='text-[1rem] tracking-wide pl-2'>Shared Documents</p>
+
+                            <img src={folder} alt="" className='ml-10 w-11 h-11' />
+                            <p className='text-[1rem] tracking-wide pl-2'>Administrator's Documents</p>
+                        </div>
+
+                        <p className='font-bold tracking-wide text-[1rem] mt-5 ml-5 leading-5'>Hard Disk Drives</p>
+                        <div className='w-74 h-0.5' style={{ background: 'linear-gradient(to right, #70bfff 0%, #fff 100%)' }}></div>
+                        <div className='ml-5 mt-2 flex items-center'>
+                            <img src={discC} alt="" className='w-11 h-11' />
+                            <p className='text-[1rem] tracking-wide pl-2'>Local Disk (C:)</p>
+                        </div>
+
+                        <p className='font-bold tracking-wide text-[1rem] mt-5 ml-5 leading-5'>Devices with Removable Storage</p>
+                        <div className='w-74 h-0.5' style={{ background: 'linear-gradient(to right, #70bfff 0%, #fff 100%)' }}></div>
+                        <div className='ml-5 mt-2 flex items-center'>
+                            <img src={dvd} alt="" className='pt-1 w-11 h-11' />
+                            <p className='text-[1rem] tracking-wide pl-2'>CD Drive (E:)</p>
                         </div>
                     </div>
                 </div>
