@@ -4,6 +4,8 @@ import go from '../assets/icons/go.ico'
 import back from '../assets/icons/back1.png'
 import front from '../assets/icons/front1.png'
 import search from '../assets/icons/search.png'
+import view from '../assets/icons/view.png'
+import downArrow from '../assets/icons/downArrow1.png'
 import emptyFolder from '../assets/icons/emptyFolder.png'
 
 const MIN_WIDTH = 300, MIN_HEIGHT = 200;
@@ -68,20 +70,24 @@ export default function MyFilesModal() {
             {/* Content */}
             <div className="h-full overflow-auto text-sm">
                 <div className='w-full bg-[#eae8d5]'>
-                    <div className='px-2 h-6 w-full flex gap-x-4 border-b-2 border-[#d1d1c8]'>
+                    <div className='tracking-wide px-2 h-6 w-full flex gap-x-4 border-b-2 border-[#d1d1c8]'>
                         <p><u>F</u>ile</p>
                         <p><u>E</u>dit</p>
                         <p><u>V</u>iew</p>
                         <p><u>H</u>elp</p>
                     </div>
 
-                    <div className='h-10 w-full flex items-center'>
+                    <div className='h-10 w-full flex items-center border-t-[1px] border-[#ffffff]'>
                         <div className='h-8 flex items-center ml-2 pr-2 border-r-2 border-[#d1d1c8]'>
                             <img src={back} alt="back" className='w-8 h-8' />
                             <p>Back</p>
+                            <img src={downArrow} alt="" className='ml-0.5 w-2 h-2 mr-2' />
+
                             <img src={front} alt="front" className='w-8 h-8' />
+                            <img src={downArrow} alt="" className=' w-2 h-2' />
                         </div>
-                        <div className='flex items-center gap-x-2 mx-3'>
+
+                        <div className='h-8 flex items-center gap-x-2 mx-3 border-r-2 pr-2 border-[#d1d1c8]'>
                             <div className='flex tracking-wide gap-x-1'>
                                 <img src={search} alt="Search" className='w-6 h-6' />
                                 <p>Search</p>
@@ -92,27 +98,37 @@ export default function MyFilesModal() {
                                 <p>Folders</p>
                             </div>
                         </div>
-                    </div>
 
-                    <div className='h-8 w-full flex border-y-2 border-[#d1d1c8]'>
-                        <p className='px-2 tracking-wide flex items-center text-center'>A<u>d</u>dress</p>
-
-                        <div className="flex items-center border border-gray-400 shadow-inner bg-gray-100 px-1 py-1 w-full text-sm font-sans max-w-xl rounded-sm">
-                            {/* Address Input Area */}
-                            <div className="flex items-center flex-1 border border-gray-400 bg-white px-2 py-[2px] shadow-inner">
-                                <span className="text-gray-800 truncate">C:\Documents and Settings\Admin\Desktop</span>
-                                <FaChevronDown className="ml-2 text-xs text-gray-600" />
-                            </div>
+                        <div className='flex items-center gap-x-1'>
+                            <img src={view} alt="Change View" className='w-6 h-6' />
+                            <img src={downArrow} alt="" className='w-2 h-2' />
                         </div>
 
-                        <div className='ml-2 w-fit pr-2 flex items-center justify-center gap-x-1  text-lg tracking-wide'>
-                            <img src={go} alt="Go" className='w-5 h-5' />
-                            <p>Go</p>
+                    </div>
+
+                    <div className='h-6 w-full flex items-center border-y-2 border-[#d1d1c8]'>
+                        <div className='h-full w-full flex border-t-[1px] border-[#ffffff]'>
+                            <p className='px-1 tracking-wide flex items-center text-center text-[#9d9c97]'>A<u>d</u>dress</p>
+
+                            <div className="flex items-center max-w-lg w-full ">
+                                {/* Address Input Area */}
+                                <div className="flex items-center h-5 flex-1 border border-gray-400 bg-white px-2 py-[2px] shadow-inner">
+                                    <span className="text-gray-800 truncate">C:\Documents and Settings\Admin\Desktop</span>
+                                    <FaChevronDown className="ml-2 text-xs text-gray-600" />
+                                </div>
+                            </div>
+
+                            <div className='ml-2 w-fit pr-2 flex items-center justify-center gap-x-1  text-lg tracking-wide'>
+                                <img src={go} alt="Go" className='w-4 h-4' />
+                                <p>Go</p>
+                            </div>
                         </div>
 
                     </div>
                 </div>
-                This is a draggable and resizable modal.
+                <div className='bg-white w-full' style={{ height: 'calc(100% - 5.7rem)' }}>
+
+                </div>
             </div>
 
             {/* Corners */}
