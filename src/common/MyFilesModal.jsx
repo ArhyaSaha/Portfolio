@@ -15,6 +15,7 @@ import dvd from '../assets/icons/dvd.png'
 import close from '../assets/icons/close.png'
 import minimize from '../assets/icons/minimize.png'
 import maximize from '../assets/icons/maximize.png'
+import msLogo from '../assets/icons/msLogo.png'
 
 const MIN_WIDTH = 300, MIN_HEIGHT = 200;
 
@@ -69,24 +70,32 @@ export default function MyFilesModal() {
         >
             {/* Title bar */}
             <div
-                className="header__bg w-full h-10 text-white px-3 py-1 text-sm font-bold cursor-move select-none"
+                className="header__bg w-full h-10 text-white pl-3 pr-1 py-1 flex items-center justify-between font-bold cursor-move select-none"
                 onMouseDown={onDrag}
             >
-                My Files
+                <p className='tracking-wide '>My Computer</p>
+                <div className='flex'>
+                    <img src={minimize} alt="" className='w-5 h-5 mr-1 z-10' />
+                    <img src={maximize} alt="" className='w-5 h-5 mr-1 z-10' />
+                    <img src={close} alt="" className='w-5 h-5 z-10' />
+                </div>
             </div>
 
             {/* Content */}
             <div className="h-full overflow-auto text-sm">
                 <div className='w-full bg-[#eae8d5]'>
-                    <div className='tracking-wide px-2 h-4 w-full flex items-center gap-x-4 border-b-2 border-[#d1d1c8]'>
-                        <p><u>F</u>ile</p>
-                        <p><u>E</u>dit</p>
-                        <p><u>V</u>iew</p>
-                        <p><u>H</u>elp</p>
+                    <div className='tracking-wide pl-1 h-5 w-full flex items-center'>
+                        <div className='tracking-wide px-2 h-full w-full flex items-center gap-x-4 border-b-2 border-r-2 border-[#d1d1c8]'>
+                            <p><u>F</u>ile</p>
+                            <p><u>E</u>dit</p>
+                            <p><u>V</u>iew</p>
+                            <p><u>H</u>elp</p>
+                        </div>
+                        <img src={msLogo} alt="" className='w-7 h-full' />
                     </div>
 
                     <div className='h-10 w-full flex items-center border-t-[1px] border-[#ffffff]'>
-                        <div className='h-8 flex items-center ml-2 pr-2 border-r-2 border-[#d1d1c8]'>
+                        <div className='h-8 flex items-center ml-1 pr-2 border-r-2 border-[#d1d1c8]'>
                             <img src={back} alt="back" className='w-8 h-8' />
                             <p>Back</p>
                             <img src={downArrow} alt="" className='ml-0.5 w-2 h-2 mr-2' />
@@ -134,8 +143,8 @@ export default function MyFilesModal() {
 
                     </div>
                 </div>
-                <div className='bg-white w-full flex' style={{ height: 'calc(100% - 5.2rem)' }}>
-                    <div className='bg-blue-500 min-w-40 h-full flex flex-col items-center py-10 gap-y-5' style={{ background: 'linear-gradient(to bottom, #748aff 0%, #4057d3 100%)' }}>
+                <div className='bg-white w-full flex' style={{ height: 'calc(100% - 5.4rem)' }}>
+                    <div className='bg-blue-500 min-w-40 h-full flex flex-col items-center ml-[0.05rem] py-3 gap-y-5' style={{ background: 'linear-gradient(to bottom, #748aff 0%, #4057d3 100%)' }}>
                         <div className='w-36 h-24 bg-white rounded-t-sm overflow-hidden' style={{
                             background: 'linear-gradient(to right, rgb(180, 200, 251) 0%, rgb(164, 185, 251) 50%, rgb(180, 200, 251) 100%)'
                         }}>
