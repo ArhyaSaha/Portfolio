@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useContext } from 'react'
 import emptyFolder from '../../assets/icons/emptyFolder.png'
 import myComputer from '../../assets/icons/myComputer.png'
 import DesktopIcon from '../../common/DesktopIcon'
 import MyFilesModal from '../../common/MyFilesModal'
+import { WindowContext } from "../../context/WindowContext";
 
 const iconsInitial = [
     { id: 1, name: 'My Computer', icon: myComputer, position: { x: 16, y: 16 } },
@@ -18,6 +19,7 @@ const Desktop = () => {
     const [selectedIds, setSelectedIds] = useState([]);
     const [selectBox, setSelectBox] = useState(null);
     const startPos = useRef(null);
+    const { windows, setWindows } = useContext(WindowContext);
 
     const [contextMenu, setContextMenu] = useState({
         visible: false,
@@ -299,8 +301,9 @@ const Desktop = () => {
                 </ul>
             )}
 
-
-            <MyFilesModal />
+            {windows[1].isOpened && !(windows[1].isMinimized) &&
+                <MyFilesModal />
+            }
         </div>
     )
 }
