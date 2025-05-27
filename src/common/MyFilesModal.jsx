@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useContext } from 'react';
 import { FaFolder, FaChevronDown, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import go from '../assets/icons/go.ico'
 import back from '../assets/icons/back1.png'
@@ -16,6 +16,7 @@ import close from '../assets/icons/close.png'
 import minimize from '../assets/icons/minimize.png'
 import maximize from '../assets/icons/maximize.png'
 import msLogo from '../assets/icons/msLogo.png'
+import { WindowContext } from "../context/WindowContext";
 
 const MIN_WIDTH = 600, MIN_HEIGHT = 400;
 
@@ -23,6 +24,7 @@ export default function MyFilesModal() {
     const [pos, setPos] = useState({ x: 200, y: 150 });
     const [size, setSize] = useState({ w: 700, h: 500 });
     const start = useRef({});
+    const { windows, setWindows } = useContext(WindowContext);
 
     const onDrag = (e) => {
         start.current = { x: e.clientX - pos.x, y: e.clientY - pos.y };
@@ -75,9 +77,24 @@ export default function MyFilesModal() {
             >
                 <p className='tracking-wide '>My Computer</p>
                 <div className='flex'>
-                    <img src={minimize} alt="" className='w-5 h-5 mr-1 z-10' />
+                    <img src={minimize} alt="" className='w-5 h-5 mr-1 z-10 cursor-pointer'
+                        onClick={() => setWindows(prevWindows =>
+                            prevWindows.map((window, index) =>
+                                index === 1
+                                    ? { ...window, isMinimized: !window.isMinimized } // Toggle or set true/false
+                                    : window
+                            )
+                        )}
+                    />
                     <img src={maximize} alt="" className='w-5 h-5 mr-1 z-10' />
-                    <img src={close} alt="" className='w-5 h-5 z-10' />
+                    <img src={close} alt="" className='w-5 h-5 z-10 cursor-pointer'
+                        onClick={() => setWindows(prevWindows =>
+                            prevWindows.map((window, index) =>
+                                index === 1
+                                    ? { ...window, isOpened: !window.isOpened } // Toggle or set true/false
+                                    : window
+                            )
+                        )} />
                 </div>
             </div>
 
