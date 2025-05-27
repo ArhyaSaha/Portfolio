@@ -6,7 +6,7 @@ const TaskDiv = ({ img, alt, classes }) => {
             background: 'linear-gradient(90deg, rgba(88, 148, 255, 1) 0%, rgba(60, 129, 237, 1) 2%, rgba(58, 128, 243, 1) 98%, rgba(58, 128, 243, 1) 100%) ',
         }}>
             <img src={img} alt={alt} className="ml-2 mr-1 w-4 h-4" />
-            <p className='text-white text-md'>C:\</p>
+            <p className='text-white text-md'>{alt}</p>
         </div>
     )
 }

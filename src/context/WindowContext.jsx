@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import paint from '../assets/icons/msPaint.png';
 
 // 1. Create the context
 export const WindowContext = createContext();
@@ -7,24 +8,24 @@ export const WindowContext = createContext();
 export const WindowProvider = ({ children }) => {
   const [windows, setWindows] = useState([
     {
-      Name: "Window 1",
-      Icon: "📁",
+      Name: "MS Paint",
+      Icon: paint,
       isOpened: true,
       isMinimized: false,
       isMaximized: false,
       isClosed: false,
     },
     {
-      Name: "Window 2",
-      Icon: "📝",
+      Name: "My Computer",
+      Icon: paint,
       isOpened: true,
       isMinimized: true,
       isMaximized: false,
       isClosed: false,
     },
     {
-      Name: "Window 3",
-      Icon: "🌐",
+      Name: "Notepad",
+      Icon: paint,
       isOpened: false,
       isMinimized: false,
       isMaximized: false,

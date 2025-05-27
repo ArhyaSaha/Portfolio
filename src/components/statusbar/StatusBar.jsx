@@ -12,7 +12,6 @@ import { WindowContext } from "../../context/WindowContext";
 const StatusBar = () => {
     const [start, setStart] = useState(false)
     const { windows, setWindows } = useContext(WindowContext);
-    console.log('wow' + windows[0].isClosed)
     return (
         <>
             <div className="flex flex-col bottom-0 left-0 w-full h-9 bg-blue-500 ">
@@ -34,11 +33,16 @@ const StatusBar = () => {
 
                     {/* Tasks */}
                     <div className='ml-2 flex items-end gap-x-0.5'>
-                        <TaskDiv
-                            img={WindowsStart}
-                            alt="taskIcon"
-                            classes="ml-2 mr-1 w-4 h-4"
-                        />
+                        {windows.map((window) =>
+                            window.isOpened && (
+                                <TaskDiv
+                                    key={window.id}
+                                    img={window.Icon}
+                                    alt={window.Name}
+                                    classes="ml-2 mr-1 w-4 h-4"
+                                />
+                            )
+                        )}
 
                         <div className='flex items-center justify-start rounded-xs z-10 h-[1.87rem] shadow-[inset_0px_0px_0px_1px_#5590FC] w-36' style={{
                             background: 'linear-gradient(90deg, rgba(88, 148, 255, 1) 0%, rgba(60, 129, 237, 1) 2%, rgba(58, 128, 243, 1) 98%, rgba(58, 128, 243, 1) 100%) ',
