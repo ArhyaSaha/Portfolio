@@ -50,18 +50,6 @@ const StatusBar = () => {
                                 />
                             )
                         )}
-
-                        <div className='flex items-center justify-start rounded-xs z-10 h-[1.87rem] shadow-[inset_0px_0px_0px_1px_#5590FC] w-36' style={{
-                            background: 'linear-gradient(90deg, rgba(88, 148, 255, 1) 0%, rgba(60, 129, 237, 1) 2%, rgba(58, 128, 243, 1) 98%, rgba(58, 128, 243, 1) 100%) ',
-                        }}>
-                            <img src={WindowsStart} alt="Home Icon" className="ml-2 mr-1 w-4 h-4" />
-                            <p className='text-white text-md'>C:\</p>
-                        </div>
-                        <div className='flex rounded-xs z-10 h-8 shadow-[inset_0px_1px_43px_-13px_#78ACFF] w-36' style={{
-                            background: 'linear-gradient(90deg, rgba(88, 148, 255, 1) 0%, rgba(60, 129, 237, 1) 2%, rgba(58, 128, 243, 1) 98%, rgba(28, 90, 198, 1) 100%) ',
-                        }}>
-                            Hello
-                        </div>
                     </div>
 
                     {/* Control Section */}
