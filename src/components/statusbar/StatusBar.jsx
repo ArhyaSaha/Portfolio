@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import WindowsStart from '../../assets/icons/windowsstart.png';
 import Volume from '../../assets/icons/volume.png';
 import Warning from '../../assets/icons/warning.png';
 import TaskDiv from '../../common/TaskDiv';
 import startButton from '../../assets/icons/start.png';
 import StartModal from './StartModal';
+import { WindowContext } from "../../context/WindowContext";
 
 
 
 const StatusBar = () => {
     const [start, setStart] = useState(false)
+    const { windows, setWindows } = useContext(WindowContext);
+    console.log('wow' + windows[0].isClosed)
     return (
         <>
             <div className="flex flex-col bottom-0 left-0 w-full h-9 bg-blue-500 ">
