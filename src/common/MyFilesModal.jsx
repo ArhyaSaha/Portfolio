@@ -17,11 +17,11 @@ import minimize from '../assets/icons/minimize.png'
 import maximize from '../assets/icons/maximize.png'
 import msLogo from '../assets/icons/msLogo.png'
 
-const MIN_WIDTH = 300, MIN_HEIGHT = 200;
+const MIN_WIDTH = 600, MIN_HEIGHT = 400;
 
 export default function MyFilesModal() {
     const [pos, setPos] = useState({ x: 200, y: 150 });
-    const [size, setSize] = useState({ w: 400, h: 300 });
+    const [size, setSize] = useState({ w: 700, h: 500 });
     const start = useRef({});
 
     const onDrag = (e) => {
