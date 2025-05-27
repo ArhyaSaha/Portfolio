@@ -265,6 +265,13 @@ const Desktop = () => {
                     onMouseDown={(e) => handleIconMouseDown(icon.id, e)}
                     onContextMenu={(e) => handleIconMouseDown(icon.id, e)}
                     isDragging={selectedIds.includes(icon.id)}
+                    onDoubleClick={() => setWindows(prevWindows =>
+                        prevWindows.map((window, index) =>
+                            index === 1
+                                ? { ...window, isOpened: true, isMinimized: false } // Toggle or set true/false
+                                : window
+                        )
+                    )}
                 />
             ))}
 
