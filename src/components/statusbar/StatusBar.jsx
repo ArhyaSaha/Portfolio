@@ -33,13 +33,20 @@ const StatusBar = () => {
 
                     {/* Tasks */}
                     <div className='ml-2 flex items-end gap-x-0.5'>
-                        {windows.map((window) =>
+                        {windows.map((window, index) =>
                             window.isOpened && (
                                 <TaskDiv
-                                    key={window.id}
+                                    key={index}
                                     img={window.Icon}
                                     alt={window.Name}
                                     classes="ml-2 mr-1 w-4 h-4"
+                                    onClick={() => setWindows(prevWindows =>
+                                        prevWindows.map((window, i) =>
+                                            i === index
+                                                ? { ...window, isMinimized: !window.isMinimized } // Toggle or set true/false
+                                                : window
+                                        )
+                                    )}
                                 />
                             )
                         )}
