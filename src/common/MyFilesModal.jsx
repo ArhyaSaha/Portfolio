@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext } from 'react';
+import React, { useRef, useState, useContext, useEffect } from 'react';
 import { FaFolder, FaChevronDown, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import go from '../assets/icons/go.ico'
 import back from '../assets/icons/back1.png'
@@ -21,10 +21,27 @@ import { WindowContext } from "../context/WindowContext";
 const MIN_WIDTH = 600, MIN_HEIGHT = 400;
 
 export default function MyFilesModal() {
-    const [pos, setPos] = useState({ x: 200, y: 150 });
-    const [size, setSize] = useState({ w: 700, h: 500 });
-    const start = useRef({});
     const { windows, setWindows } = useContext(WindowContext);
+
+    const [pos, setPos] = useState(windows[1].pos || { x: 200, y: 150 });
+    const [size, setSize] = useState(windows[1].size || { w: 700, h: 500 });
+    const start = useRef({});
+
+    useEffect(() => {
+        setWindows(prevWindows =>
+            prevWindows.map((window, index) =>
+                index === 1
+                    ? {
+                        ...window,
+                        size: { ...size },
+                        pos: { ...pos }
+                    } // Toggle or set true/false
+                    : window
+            )
+        )
+        console.log(size, pos)
+    }, [size, pos])
+
 
     const onDrag = (e) => {
         start.current = { x: e.clientX - pos.x, y: e.clientY - pos.y };
@@ -65,14 +82,35 @@ export default function MyFilesModal() {
         { dir: 'right', class: 'right-0 top-3 bottom-3 w-[6px] cursor-resize-ew' },
     ];
 
+    const maximizeWindow = () => {
+        if (windows[1].isMaximized) {
+            setSize({ w: 860, h: 585 })
+            setPos({ x: 488, y: 53 })
+        } else {
+            setSize({ w: window.innerWidth, h: window.innerHeight - 32 })
+            setPos({ x: 0, y: 0 })
+        }
+
+        setWindows(prevWindows =>
+            prevWindows.map((window, index) =>
+                index === 1
+                    ? {
+                        ...window,
+                        isMaximized: !window.isMaximized,
+                    } // Toggle or set true/false
+                    : window
+            )
+        )
+    }
+
     return (
         <div
-            className="absolute pt-7 overflow-hidden rounded-t-lg bg-blue-600 px-0.5 shadow-lg z-50"
+            className={`absolute pt-7 overflow-hidden bg-blue-600 px-0.5 shadow-lg z-50 ${windows[1].isMaximized ? '' : 'rounded-t-lg'}`}
             style={{ left: pos.x, top: pos.y, width: size.w, height: size.h }}
         >
             {/* Title bar */}
             <div
-                className="header__bg w-full h-10 text-white pl-3 pr-1 py-1 flex items-center justify-between font-bold cursor-move select-none"
+                className="header__bg w-full h-10 text-white pl-3 pr-1 py-1 flex items-center justify-between font-bold select-none"
                 onMouseDown={onDrag}
             >
                 <p className='tracking-wide '>My Computer</p>
@@ -86,7 +124,7 @@ export default function MyFilesModal() {
                             )
                         )}
                     />
-                    <img src={maximize} alt="" className='w-5 h-5 mr-1 z-10' />
+                    <img src={maximize} alt="" className='w-5 h-5 mr-1 z-10' onClick={maximizeWindow} />
                     <img src={close} alt="" className='w-5 h-5 z-10 cursor-pointer'
                         onClick={() => setWindows(prevWindows =>
                             prevWindows.map((window, index) =>
