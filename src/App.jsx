@@ -10,7 +10,7 @@ import { WindowProvider } from "./context/WindowContext";
 const App = () => {
   return (
     <WindowProvider>
-      <div className="bg-[url('/Background.jpg')] bg-cover bg-center flex flex-col h-screen z-0" style={{ cursor: 'url("/cursor/default_arrow.cur"), auto' }}>
+      <div className="bg-[url('/Background.jpg')] bg-cover bg-center flex flex-col h-screen z-0 cursor-default">
         <Desktop />
 
         <StatusBar />

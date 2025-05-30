@@ -55,7 +55,7 @@ width: 15px;
 
 /* Custom cursor for default arrow */
 .cursor-default {
-    cursor: url("/default_arrow.cur");
+    cursor: url("/cursor/default_arrow.cur"),auto;
 }
 
 /* Custom pointer cursor (e.g., hand on hover) */
