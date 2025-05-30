@@ -52,17 +52,17 @@ export default function MyFilesModal() {
     };
 
     const corners = [
-        { dir: 'top-left', class: 'top-0 left-0 cursor-nwse-resize' },
-        { dir: 'top-right', class: 'top-0 right-0 cursor-nesw-resize' },
-        { dir: 'bottom-left', class: 'bottom-0 left-0 cursor-nesw-resize' },
-        { dir: 'bottom-right', class: 'bottom-0 right-0 cursor-nwse-resize' },
+        { dir: 'top-left', class: 'top-0 left-0 cursor-resize-nwse' },
+        { dir: 'top-right', class: 'top-0 right-0 cursor-resize-nesw' },
+        { dir: 'bottom-left', class: 'bottom-0 left-0 cursor-resize-nesw' },
+        { dir: 'bottom-right', class: 'bottom-0 right-0 cursor-resize-nwse' },
     ];
 
     const edges = [
-        { dir: 'top', class: 'top-0 left-3 right-3 h-[6px] cursor-ns-resize' },
-        { dir: 'bottom', class: 'bottom-0 left-3 right-3 h-[6px] cursor-ns-resize' },
-        { dir: 'left', class: 'left-0 top-3 bottom-3 w-[6px] cursor-ew-resize' },
-        { dir: 'right', class: 'right-0 top-3 bottom-3 w-[6px] cursor-ew-resize' },
+        { dir: 'top', class: 'top-0 left-3 right-3 h-[6px] cursor-resize-ns' },
+        { dir: 'bottom', class: 'bottom-0 left-3 right-3 h-[6px] cursor-resize-ns' },
+        { dir: 'left', class: 'left-0 top-3 bottom-3 w-[6px] cursor-resize-ew' },
+        { dir: 'right', class: 'right-0 top-3 bottom-3 w-[6px] cursor-resize-ew' },
     ];
 
     return (
