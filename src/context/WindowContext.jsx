@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react";
 import paint from '../assets/icons/msPaint.png';
+import myComputer from '../assets/icons/myComputer.png';
 
 // 1. Create the context
 export const WindowContext = createContext();
@@ -20,12 +21,12 @@ export const WindowProvider = ({ children }) => {
     },
     {
       Name: "My Computer",
-      Icon: paint,
+      Icon: myComputer,
       isOpened: true,
       isMinimized: false,
       isMaximized: false,
       isClosed: false,
-      size: { w: 900, h: 700 },
+      size: { w: 700, h: 500 },
       pos: { x: 200, y: 150 },
     },
     {
