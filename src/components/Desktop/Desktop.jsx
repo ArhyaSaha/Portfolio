@@ -1,13 +1,16 @@
 import React, { useEffect, useRef, useState, useContext } from 'react'
 import emptyFolder from '../../assets/icons/emptyFolder.png'
 import myComputer from '../../assets/icons/myComputer.png'
+import notepad from '../../assets/icons/notepad.png'
 import DesktopIcon from '../../common/DesktopIcon'
 import MyFilesModal from '../../common/MyFilesModal'
+import NotepadModal from '../../common/NotepadModal'
 import { WindowContext } from "../../context/WindowContext";
 
 const iconsInitial = [
     { id: 1, name: 'My Computer', icon: myComputer, position: { x: 16, y: 16 } },
     { id: 2, name: 'My Folder', icon: emptyFolder, position: { x: 16, y: 96 } },
+    { id: 3, name: 'Notepad', icon: notepad, position: { x: 16, y: 176 } },
 ];
 const GRID_SIZE = 80;
 const PADDING_OFFSET = 16;
@@ -265,13 +268,26 @@ const Desktop = () => {
                     onMouseDown={(e) => handleIconMouseDown(icon.id, e)}
                     onContextMenu={(e) => handleIconMouseDown(icon.id, e)}
                     isDragging={selectedIds.includes(icon.id)}
-                    onDoubleClick={() => setWindows(prevWindows =>
-                        prevWindows.map((window, index) =>
-                            index === 1
-                                ? { ...window, isOpened: true, isMinimized: false } // Toggle or set true/false
-                                : window
-                        )
-                    )}
+                    onDoubleClick={() => {
+                        // Open window based on icon name
+                        if (icon.name === 'My Computer') {
+                            setWindows(prevWindows =>
+                                prevWindows.map((window, index) =>
+                                    index === 1
+                                        ? { ...window, isOpened: true, isMinimized: false }
+                                        : window
+                                )
+                            )
+                        } else if (icon.name === 'Notepad') {
+                            setWindows(prevWindows =>
+                                prevWindows.map((window, index) =>
+                                    index === 2
+                                        ? { ...window, isOpened: true, isMinimized: false }
+                                        : window
+                                )
+                            )
+                        }
+                    }}
                 />
             ))}
 
@@ -310,6 +326,10 @@ const Desktop = () => {
 
             {windows[1].isOpened && !(windows[1].isMinimized) &&
                 <MyFilesModal />
+            }
+
+            {windows[2].isOpened && !(windows[2].isMinimized) &&
+                <NotepadModal />
             }
         </div>
     )
