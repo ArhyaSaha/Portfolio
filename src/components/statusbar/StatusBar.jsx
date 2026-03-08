@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import WindowsStart from '../../assets/icons/windowsstart.png';
 import Volume from '../../assets/icons/volume.png';
 import Warning from '../../assets/icons/warning.png';
@@ -11,7 +11,16 @@ import { WindowContext } from "../../context/WindowContext";
 
 const StatusBar = () => {
     const [start, setStart] = useState(false)
+    const [currentTime, setCurrentTime] = useState(new Date())
     const { windows, setWindows } = useContext(WindowContext);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentTime(new Date())
+        }, 1000)
+
+        return () => clearInterval(timer)
+    }, [])
     return (
         <>
             <div className="flex flex-col bottom-0 left-0 w-full h-9 bg-blue-500 ">
@@ -58,7 +67,9 @@ const StatusBar = () => {
                     }} >
                         <img src={Volume} alt="" className='w-4 h-4' />
                         <img src={Warning} alt="" className='w-4 h-4' />
-                        <p className='text-white justify-end text-lg'>7:30 pm</p>
+                        <p className='text-white justify-end text-lg'>
+                            {currentTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
+                        </p>
                     </div>
                 </div>
             </div>

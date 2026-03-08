@@ -25,7 +25,7 @@ const StartModal = ({ isOpen }) => {
                 <div className='flex justify-center items-center ml-5 w-15 h-15 rounded-sm bg-white p-0'>
                     <img src={userImage} alt="User Image" className='w-14 h-14' />
                 </div>
-                <p className='ml-5 text-white text-2xl tracking-wider font-extralight' style={{ fontFamily: 'ArialNarrow' }}>Jim Midnite</p>
+                <p className='ml-5 text-white text-2xl tracking-wider font-extralight' style={{ fontFamily: 'ArialNarrow' }}>Arhya Pratim Saha</p>
             </div>
             {/* Contents */}
             <div className='h-[27rem] flex w-[29.75rem] items-center bg-amber-400'>
