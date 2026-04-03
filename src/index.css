@@ -107,3 +107,36 @@ width: 15px;
 
     mix-blend-mode: multiply
 }
+
+.boot-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    min-height: 100dvh;
+    z-index: 2147483647;
+    display: grid;
+    place-items: center;
+    background: #000;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 1.4s ease;
+}
+
+.boot-overlay--fadeout {
+    opacity: 0;
+}
+
+.boot-animation {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    object-fit: contain;
+    transform: none;
+    transform-origin: center;
+    image-rendering: auto;
+}

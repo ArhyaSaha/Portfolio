@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState, useContext } from 'react'
 import emptyFolder from '../../assets/icons/emptyFolder.png'
 import myComputer from '../../assets/icons/myComputer.png'
 import notepad from '../../assets/icons/notepad.png'
+import github from '../../assets/icons/github-black.png'
+import resume from '../../assets/icons/PDF.ico'
 import DesktopIcon from '../../common/DesktopIcon'
 import MyFilesModal from '../../common/MyFilesModal'
 import NotepadModal from '../../common/NotepadModal'
@@ -11,6 +13,8 @@ const iconsInitial = [
     { id: 1, name: 'My Computer', icon: myComputer, position: { x: 16, y: 16 } },
     { id: 2, name: 'My Folder', icon: emptyFolder, position: { x: 16, y: 96 } },
     { id: 3, name: 'Notepad', icon: notepad, position: { x: 16, y: 176 } },
+    { id: 4, name: 'My GitHub', icon: github, position: { x: 16, y: 256 } },
+    { id: 5, name: 'My Resume', icon: resume, position: { x: 16, y: 336 } },
 ];
 const GRID_SIZE = 80;
 const PADDING_OFFSET = 16;
@@ -268,6 +272,7 @@ const Desktop = () => {
                     onMouseDown={(e) => handleIconMouseDown(icon.id, e)}
                     onContextMenu={(e) => handleIconMouseDown(icon.id, e)}
                     isDragging={selectedIds.includes(icon.id)}
+                    iconSize={icon.name === 'My GitHub' || icon.name === 'My Resume' ? 'w-10 h-10' : undefined}
                     onDoubleClick={() => {
                         // Open window based on icon name
                         if (icon.name === 'My Computer') {
@@ -286,6 +291,10 @@ const Desktop = () => {
                                         : window
                                 )
                             )
+                        } else if (icon.name === 'My GitHub') {
+                            window.open('https://github.com/ArhyaSaha', '_blank')
+                        } else if (icon.name === 'My Resume') {
+                            window.open('https://drive.google.com/file/d/1_qH0Lq8hrvwHMU5DYrDzPe_nSnH6cI0x/view?usp=drive_link', '_blank')
                         }
                     }}
                 />

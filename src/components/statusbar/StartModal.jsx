@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import logOff from '../../assets/icons/logoff.png'
 import powerOff from '../../assets/icons/poweroff.png'
 import IE from '../../assets/icons/internetExplorer.png'
@@ -15,9 +15,14 @@ import help from '../../assets/icons/help.png'
 import userImage from '../../assets/icons/ball.jpg'
 import greenTriangle from '../../assets/icons/greenTriangle.png'
 import paint from '../../assets/icons/msPaint.png'
+import notepad from '../../assets/icons/notepad.png'
+import github from '../../assets/icons/github-black.png'
+import resume from '../../assets/icons/PDF.ico'
+import { WindowContext } from "../../context/WindowContext";
 
 
 const StartModal = ({ isOpen }) => {
+    const { windows, setWindows } = useContext(WindowContext);
     return (
         <div className='fixed flex flex-col items-center justify-between bottom-9 w-[30rem] h-[35rem] bg-[#3C89E7] overflow-hidden z-50'>
             {/* Username Div */}
@@ -48,22 +53,28 @@ const StartModal = ({ isOpen }) => {
                         <div className='h-[0.148rem] w-full' style={{
                             background: 'linear-gradient(90deg,rgba(255, 255, 255, 1) 0%, rgba(225, 225, 217, 1) 20%, rgba(225, 225, 217, 1) 80%, rgba(255, 255, 255, 1) 100%)'
                         }}></div>
-                        <div className='flex items-center pt-3'>
-                            <img src={email} alt="Internet Explorer" className='w-10 h-10' />
+                        <div className='flex items-center pt-3 cursor-pointer hover:bg-blue-100' onClick={() => setWindows(prevWindows =>
+                            prevWindows.map((window, index) =>
+                                index === 2
+                                    ? { ...window, isOpened: true, isMinimized: false }
+                                    : window
+                            )
+                        )}>
+                            <img src={notepad} alt="Notepad" className='w-10 h-10' />
                             <div className='pl-3 '>
-                                <p className='leading-4 tracking-wide text-lg '>Outlook Express</p>
+                                <p className='leading-4 tracking-wide text-lg '>Notepad</p>
                             </div>
                         </div>
-                        <div className='flex items-center pt-3'>
-                            <img src={email} alt="Internet Explorer" className='w-10 h-10' />
+                        <div className='flex items-center pt-3 cursor-pointer hover:bg-blue-100' onClick={() => window.open('https://github.com/ArhyaSaha', '_blank')}>
+                            <img src={github} alt="GitHub" className='w-10 h-10' />
                             <div className='pl-3'>
-                                <p className='leading-4 tracking-wide text-lg '>Outlook Express</p>
+                                <p className='leading-4 tracking-wide text-lg '>GitHub</p>
                             </div>
                         </div>
-                        <div className='flex items-center pt-3'>
-                            <img src={email} alt="Internet Explorer" className='w-10 h-10' />
+                        <div className='flex items-center pt-3 cursor-pointer hover:bg-blue-100' onClick={() => window.open('https://drive.google.com/file/d/1_qH0Lq8hrvwHMU5DYrDzPe_nSnH6cI0x/view?usp=drive_link', '_blank')}>
+                            <img src={resume} alt="Resume" className='w-10 h-10' />
                             <div className='pl-3'>
-                                <p className='leading-4 tracking-wide text-lg '>Outlook Express</p>
+                                <p className='leading-4 tracking-wide text-lg '>My Resume</p>
                             </div>
                         </div>
                         <div className='flex items-center pt-3'>

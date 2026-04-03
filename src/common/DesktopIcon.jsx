@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 const DesktopIcon = ({
-    icon, name, position, selected, onMouseDown, isDragging, onContextMenu, onDoubleClick
+    icon, name, position, selected, onMouseDown, isDragging, onContextMenu, onDoubleClick, iconSize = 'w-8 h-8'
 }) => {
     return (
         <div
@@ -17,7 +17,7 @@ const DesktopIcon = ({
             }}
             onDoubleClick={onDoubleClick}
         >
-            <img src={icon} alt={name} className='w-8 h-8 pointer-events-none mb-1' draggable={false} />
+            <img src={icon} alt={name} className={`${iconSize} pointer-events-none mb-1`} draggable={false} />
             <p className={`text-white w-18 py-0.5 rounded-none pointer-events-none px-1 text-center leading-4 ${selected ? 'bg-[#1A57A4] text-white rounded' : ''}`}>{name}</p>
         </div>
     )
