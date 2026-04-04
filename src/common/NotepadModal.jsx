@@ -12,7 +12,22 @@ export default function NotepadModal() {
 
     const [pos, setPos] = useState(windows[2].pos || { x: 200, y: 150 });
     const [size, setSize] = useState(windows[2].size || { w: 700, h: 500 });
-    const [textContent, setTextContent] = useState('');
+    const [textContent, setTextContent] = useState(`WELCOME TO MY PAGE!
+
+Btw, What are you doing on my PC!?
+
+Haha, Anyways,
+This is a 1-1 replica of windows XP which i made for fun and gave it a little twist to make it my portfolio..
+
+Go ahead and use it as your PC you can also open:
+1. My Github
+2. My Resume
+
+
+For more fun, I'm planning to add:
+1. Paint
+2. Winamp
+3. Internet Explorer 😉`);
     const start = useRef({});
     const textareaRef = useRef(null);
 
@@ -147,8 +162,7 @@ export default function NotepadModal() {
                         <p className='hover:bg-[#d4d0c8] '><u>H</u>elp</p>
                     </div>
                 </div>
-                
-                    
+
                 {/* Text Area */}
                 <textarea
                     ref={textareaRef}
