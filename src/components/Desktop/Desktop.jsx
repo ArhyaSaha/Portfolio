@@ -260,7 +260,7 @@ const Desktop = () => {
             ref={containerRef}
             onMouseDown={onMouseDown}
             onContextMenu={onDesktopRightClick}
-            className='relative bg-transparent w-full h-full gap-y-4 px-4 py-2 overflow-hidden'
+            className='desktop-fadein relative bg-transparent w-full h-full gap-y-4 px-4 py-2 overflow-hidden'
         >
             {icons.map((icon) => (
                 <DesktopIcon

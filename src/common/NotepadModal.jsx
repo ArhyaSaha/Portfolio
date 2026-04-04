@@ -8,7 +8,7 @@ import { WindowContext } from "../context/WindowContext";
 const MIN_WIDTH = 400, MIN_HEIGHT = 300;
 
 export default function NotepadModal() {
-    const { windows, setWindows } = useContext(WindowContext);
+    const { windows, setWindows, bringToFront } = useContext(WindowContext);
 
     const [pos, setPos] = useState(windows[2].pos || { x: 200, y: 150 });
     const [size, setSize] = useState(windows[2].size || { w: 700, h: 500 });
@@ -38,6 +38,7 @@ export default function NotepadModal() {
     }, [size, pos])
 
     const onDrag = (e) => {
+        bringToFront(2);
         start.current = { x: e.clientX - pos.x, y: e.clientY - pos.y };
         const move = e => setPos({ x: e.clientX - start.current.x, y: e.clientY - start.current.y });
         const up = () => window.removeEventListener('mousemove', move);
@@ -46,6 +47,7 @@ export default function NotepadModal() {
     };
 
     const onResize = (e, dir) => {
+        bringToFront(2);
         e.stopPropagation();
         const sx = e.clientX, sy = e.clientY, sw = size.w, sh = size.h, px = pos.x, py = pos.y;
         const move = e => {
@@ -99,8 +101,9 @@ export default function NotepadModal() {
 
     return (
         <div
-            className={`absolute pt-7 overflow-hidden bg-blue-600 px-0.5 shadow-lg z-50 ${windows[2].isMaximized ? '' : 'rounded-t-lg'}`}
-            style={{ left: pos.x, top: pos.y, width: size.w, height: size.h }}
+            className={`absolute pt-7 overflow-hidden bg-blue-600 px-0.5 shadow-lg ${windows[2].isMaximized ? '' : 'rounded-t-lg'}`}
+            style={{ left: pos.x, top: pos.y, width: size.w, height: size.h, zIndex: windows[2].zIndex ?? 50 }}
+            onMouseDown={() => bringToFront(2)}
         >
             {/* Title bar */}
             <div

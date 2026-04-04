@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect, useRef } from 'react'
 import WindowsStart from '../../assets/icons/windowsstart.png';
 import Volume from '../../assets/icons/volume.png';
 import Warning from '../../assets/icons/warning.png';
@@ -13,6 +13,7 @@ const StatusBar = () => {
     const [start, setStart] = useState(false)
     const [currentTime, setCurrentTime] = useState(new Date())
     const { windows, setWindows } = useContext(WindowContext);
+    const startAreaRef = useRef(null)
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -21,9 +22,50 @@ const StatusBar = () => {
 
         return () => clearInterval(timer)
     }, [])
+
+    useEffect(() => {
+        if (!start) {
+            return
+        }
+
+        const handleOutsideClick = (event) => {
+            if (startAreaRef.current && !startAreaRef.current.contains(event.target)) {
+                setStart(false)
+            }
+        }
+
+        document.addEventListener('mousedown', handleOutsideClick)
+
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick)
+        }
+    }, [start])
+
+    useEffect(() => {
+        const handleGlobalKeyDown = (event) => {
+            if (event.repeat) {
+                return
+            }
+
+            const isWindowsKey = event.key === 'Meta' || event.code === 'MetaLeft' || event.code === 'MetaRight'
+            const isCtrlEsc = event.ctrlKey && event.key === 'Escape'
+
+            if (isWindowsKey || isCtrlEsc) {
+                event.preventDefault()
+                setStart((prev) => !prev)
+            }
+        }
+
+        window.addEventListener('keydown', handleGlobalKeyDown)
+
+        return () => {
+            window.removeEventListener('keydown', handleGlobalKeyDown)
+        }
+    }, [])
+
     return (
-        <>
-            <div className="flex flex-col bottom-0 left-0 w-full h-9 bg-blue-500 ">
+        <div ref={startAreaRef}>
+            <div className="statusbar-fadein flex flex-col bottom-0 left-0 w-full h-9 bg-blue-500 ">
                 {/* <div className='h-[0.15rem]' style={{ backgroundColor: '#3082E4' }}></div> */}
                 <div className='h-full flex items-center overflow-visible relative' style={{
                     // background: 'linear-gradient(180deg, rgba(5,71,201,1) 20%, rgba(31,94,221,1) 100%)',
@@ -76,7 +118,7 @@ const StatusBar = () => {
             {start &&
                 <StartModal isOpen={true}></StartModal>
             }
-        </>
+        </div>
     )
 }
 

@@ -18,6 +18,24 @@ body {
     font-family: 'MyFont', sans-serif;
 }
 
+@keyframes shellFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.desktop-fadein {
+    animation: shellFadeIn 280ms ease-out;
+}
+
+.statusbar-fadein {
+    animation: shellFadeIn 320ms ease-out;
+}
+
 .header__bg {
     background: linear-gradient(to bottom,#0058ee 0%,#3593ff 4%,#288eff 6%,#127dff 8%,#036ffc 10%,#0262ee 14%,#0057e5 20%,#0054e3 24%,#0055eb 56%,#005bf5 66%,#026afe 76%,#0062ef 86%,#0052d6 92%,#0040ab 94%,#003092 100%);
 position: absolute;
@@ -139,4 +157,368 @@ width: 15px;
     transform: none;
     transform-origin: center;
     image-rendering: auto;
+}
+
+.xp-logon {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483000;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    transition: opacity 0.9s ease;
+}
+
+.xp-logon--fadeout {
+    opacity: 0;
+}
+
+.xp-logon__topbar {
+    height: clamp(54px, 8vh, 92px);
+    background: #0d4f9f;
+    border-bottom: 3px solid #75a7df;
+    flex: 0 0 auto;
+}
+
+.xp-logon__main {
+    flex: 1 1 auto;
+    display: grid;
+    place-items: center;
+}
+
+.xp-logon__content {
+    width: min(720px, 88vw);
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) 1px minmax(280px, 1fr);
+    align-items: center;
+    column-gap: 26px;
+    color: #ffffff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.55);
+}
+
+.xp-logon__left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+}
+
+.xp-logon__logo {
+    width: min(210px, 64vw);
+    height: auto;
+    margin-left: auto;
+}
+
+.xp-logon__title {
+    font-family: 'ArialNarrow', sans-serif;
+    font-size: clamp(18px, 1.8vw, 26px);
+    font-weight: 550;
+    line-height: 1.06;
+    text-align: center;
+    color: #f5faff;
+    margin-top: 8px;
+}
+
+.xp-logon__divider {
+    height: min(50vh, 360px);
+    width: 1px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.05));
+}
+
+.xp-logon__right {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.xp-logon__accountRow {
+    border: 0;
+    background: transparent;
+    color: #f6faff;
+    padding: 2px 0;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: url("/cursor/default_link.cur"), pointer;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.xp-logon__accountRow:hover,
+.xp-logon__accountRow:focus-visible {
+    opacity: 1;
+}
+
+.xp-logon__accountRow:focus-visible {
+    outline: 1px dotted rgba(255, 255, 255, 0.9);
+    outline-offset: 4px;
+}
+
+.xp-logon__accountAvatar {
+    width: 62px;
+    height: 62px;
+    border-radius: 6px;
+    border: 2px solid rgba(240, 244, 248, 0.95);
+    object-fit: cover;
+}
+
+.xp-logon__accountName {
+    font-family: 'ArialNarrow', sans-serif;
+    font-size: clamp(18px, 2.4vw, 28px);
+    font-weight: 550;
+    line-height: 1;
+    color: #e8efff;
+}
+
+.xp-logon__bottombar {
+    min-height: clamp(72px, 10vh, 108px);
+    border-top: 3px solid #6e9fd4;
+    background: #0d4f9f;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 22px;
+    padding: 10px clamp(16px, 2.8vw, 42px);
+}
+
+.xp-logon__powerButton {
+    border: 0;
+    background: transparent;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'ArialNarrow', sans-serif;
+    font-size: clamp(17px, 1.6vw, 24px);
+    font-weight: 550;
+    cursor: url("/cursor/default_link.cur"), pointer;
+}
+
+.xp-logon__powerButton img {
+    width: clamp(28px, 2.6vw, 40px);
+    height: clamp(28px, 2.6vw, 40px);
+    object-fit: contain;
+}
+
+.xp-logon__footerNote {
+    max-width: min(620px, 60vw);
+    text-align: left;
+    font-family: 'MyFont', sans-serif;
+    font-size: clamp(13px, 1.2vw, 18px);
+    font-weight: normal;
+    line-height: 1.24;
+    color: #f0f7ff;
+}
+
+@media (max-width: 960px) {
+    .xp-logon__content {
+        width: min(720px, 95vw);
+        grid-template-columns: 1fr;
+        justify-items: center;
+        row-gap: 18px;
+    }
+
+    .xp-logon__divider {
+        display: none;
+    }
+
+    .xp-logon__right {
+        width: min(320px, 90vw);
+        align-items: center;
+    }
+
+    .xp-logon__bottombar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .xp-logon__footerNote {
+        max-width: 100%;
+    }
+}
+
+.xp-welcome {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483000;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    transition: opacity 0.9s ease;
+}
+
+.xp-welcome--fadeout {
+    opacity: 0;
+}
+
+.xp-welcome__topbar {
+    height: clamp(54px, 8vh, 92px);
+    background: #0d4f9f;
+    border-bottom: 0;
+    flex: 0 0 auto;
+}
+
+.xp-welcome__main {
+    flex: 1 1 auto;
+    display: grid;
+    place-items: center;
+}
+
+.xp-welcome__content {
+    width: min(720px, 88vw);
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) 1px minmax(280px, 1fr);
+    align-items: center;
+    column-gap: 26px;
+    color: #ffffff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.55);
+}
+
+.xp-welcome__left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    height: 100%;
+}
+
+.xp-welcome__text {
+    font-family: 'ArialNarrow', sans-serif;
+    font-size: clamp(54px, 6.5vw, 78px);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1;
+    text-align: center;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.xp-welcome__divider {
+    height: min(50vh, 360px);
+    width: 1px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.05));
+}
+
+.xp-welcome__right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    padding-left: 8px;
+}
+
+.xp-welcome__username {
+    font-family: 'ArialNarrow', sans-serif;
+    font-size: clamp(22px, 2.7vw, 32px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: #ffffff;
+    margin: 0;
+}
+
+.xp-welcome__status {
+    font-family: 'ArialNarrow', sans-serif;
+    font-size: clamp(12px, 1.35vw, 17px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: #a8c0e8;
+    margin: 0;
+}
+
+.xp-welcome__accountRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.xp-welcome__avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 4px;
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    object-fit: cover;
+    flex: 0 0 auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.xp-welcome__accountInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.xp-welcome__bottombar {
+    min-height: clamp(72px, 10vh, 108px);
+    border-top: 0;
+    background: #0d4f9f;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 22px;
+    padding: 10px clamp(16px, 2.8vw, 42px);
+}
+
+.xp-welcome__powerButton {
+    border: 0;
+    background: transparent;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'ArialNarrow', sans-serif;
+    font-size: clamp(17px, 1.6vw, 24px);
+    font-weight: 550;
+    cursor: url("/cursor/default_link.cur"), pointer;
+}
+
+.xp-welcome__powerButton img {
+    width: clamp(28px, 2.6vw, 40px);
+    height: clamp(28px, 2.6vw, 40px);
+    object-fit: contain;
+}
+
+.xp-welcome__footerNote {
+    max-width: min(620px, 60vw);
+    text-align: left;
+    font-family: 'MyFont', sans-serif;
+    font-size: clamp(13px, 1.2vw, 18px);
+    font-weight: normal;
+    line-height: 1.24;
+    color: #f0f7ff;
+}
+
+@media (max-width: 960px) {
+    .xp-welcome__content {
+        width: min(720px, 95vw);
+        grid-template-columns: 1fr;
+        justify-items: center;
+        row-gap: 18px;
+    }
+
+    .xp-welcome__divider {
+        display: none;
+    }
+
+    .xp-welcome__text {
+        text-align: center;
+    }
+
+    .xp-welcome__bottombar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .xp-welcome__footerNote {
+        max-width: 100%;
+    }
 }
